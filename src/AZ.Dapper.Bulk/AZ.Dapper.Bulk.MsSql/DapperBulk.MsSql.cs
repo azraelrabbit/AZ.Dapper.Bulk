@@ -24,14 +24,14 @@ namespace AZ.Dapper.Bulk
 				bulkCopy.WriteToServer(sourceData);
             }
         }
-        public static void BulkInsert(this SqlConnection conn, DataTable sourceData,SqlBulkCopyColumnMappingCollection columnMappingCollection, int batchSize = 5000)
+        public static void BulkInsert(this SqlConnection conn, DataTable sourceData,List<SqlBulkCopyColumnMapping> columnMappingCollection, int batchSize = 5000)
         {
             using (var bulkCopy = new SqlBulkCopy(conn))
             {
                 bulkCopy.BatchSize = batchSize;
                 bulkCopy.DestinationTableName = sourceData.TableName;
 
-                foreach (SqlBulkCopyColumnMapping cm in columnMappingCollection)
+                foreach (var cm in columnMappingCollection)
                 {
                     bulkCopy.ColumnMappings.Add(cm);
                 }
