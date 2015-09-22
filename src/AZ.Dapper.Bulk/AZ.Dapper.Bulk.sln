@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AZ.Dapper.Bulk", "AZ.Dapper.Bulk\AZ.Dapper.Bulk.csproj", "{251AC122-D10F-483B-9746-E952E7B94CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AZ.Dapper.Bulk.Mysql", "AZ.Dapper.Bulk.Mysql\AZ.Dapper.Bulk.Mysql.csproj", "{2B156466-B333-4E87-A704-3207B53F479D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AZ.Dapper.Bulk.MsSql", "AZ.Dapper.Bulk.MsSql\AZ.Dapper.Bulk.MsSql.csproj", "{A39281FF-C173-4967-9965-61E2D4284AE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{251AC122-D10F-483B-9746-E952E7B94CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251AC122-D10F-483B-9746-E952E7B94CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251AC122-D10F-483B-9746-E952E7B94CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251AC122-D10F-483B-9746-E952E7B94CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B156466-B333-4E87-A704-3207B53F479D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B156466-B333-4E87-A704-3207B53F479D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B156466-B333-4E87-A704-3207B53F479D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B156466-B333-4E87-A704-3207B53F479D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A39281FF-C173-4967-9965-61E2D4284AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39281FF-C173-4967-9965-61E2D4284AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A39281FF-C173-4967-9965-61E2D4284AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39281FF-C173-4967-9965-61E2D4284AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
