@@ -9,22 +9,34 @@ namespace AZ.Dapper.Bulk
 {
     public static partial class DapperBulk
     {
-        public static void BulkInsert(this SqlConnection conn,DataTable sourceData,int batchSize=5000)
+        public static void BulkInsert(this SqlConnection conn, DataTable sourceData, int batchSize = 5000)
         {
             using (var bulkCopy = new SqlBulkCopy(conn))
             {
                 bulkCopy.BatchSize = batchSize;
                 bulkCopy.DestinationTableName = sourceData.TableName;
 
-                foreach ( DataColumn column in sourceData.Columns)
+                foreach (DataColumn column in sourceData.Columns)
                 {
                     bulkCopy.ColumnMappings.Add(column.ColumnName, column.ColumnName);
                 }
 
-				bulkCopy.WriteToServer(sourceData);
+                bulkCopy.WriteToServer(sourceData);
             }
         }
-        public static void BulkInsert(this SqlConnection conn, DataTable sourceData,List<SqlBulkCopyColumnMapping> columnMappingCollection, int batchSize = 5000)
+
+        public static void BulkInsert(this SqlConnection conn, DataTable sourceData, string destTableName,
+            int batchSize = 5000)
+        {
+            if (!string.IsNullOrEmpty(destTableName))
+            {
+                sourceData.TableName = destTableName;
+            }
+            BulkInsert(conn, sourceData, batchSize);
+        }
+
+        public static void BulkInsert(this SqlConnection conn, DataTable sourceData,
+            List<SqlBulkCopyColumnMapping> columnMappingCollection, int batchSize = 5000)
         {
             using (var bulkCopy = new SqlBulkCopy(conn))
             {
@@ -40,5 +52,15 @@ namespace AZ.Dapper.Bulk
             }
         }
 
+        public static void BulkInsert(this SqlConnection conn, DataTable sourceData, string destTableName,
+            List<SqlBulkCopyColumnMapping> columnMappingCollection, int batchSize = 5000)
+        {
+            if (!string.IsNullOrEmpty(destTableName))
+            {
+                sourceData.TableName = destTableName;
+            }
+
+            BulkInsert(conn, sourceData, columnMappingCollection, batchSize);
+        }
     }
 }
