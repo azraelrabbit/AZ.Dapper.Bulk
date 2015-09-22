@@ -8,15 +8,15 @@ using System.Security.AccessControl;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-namespace AZ.Dapper.Bulk.Mysql
+namespace AZ.Dapper.Bulk
 {
-    public partial class DapperBulk
+    public static partial class DapperBulk
     {
 
         private const string FieldTerminator = ",";
         private const string LineTerminator = "\r\n";
 
-        public static void BulkInsert(MySqlConnection conn, DataTable sourceData)
+        public static void BulkInsert(this MySqlConnection conn, DataTable sourceData)
         {
             var csvFile = string.Empty;
             try
@@ -54,7 +54,7 @@ namespace AZ.Dapper.Bulk.Mysql
             }
         }
 
-        public static void BulkInsert<T>(MySqlConnection conn, List<T> sourceData, string destTableName)
+        public static void BulkInsert<T>(this MySqlConnection conn, List<T> sourceData, string destTableName)
         {
             var csvFile = string.Empty;
             try
@@ -92,7 +92,7 @@ namespace AZ.Dapper.Bulk.Mysql
             }
         }
 
-        public static void BulkInsert<T>(MySqlConnection conn, List<List<object>> sourceData, string destTableName)
+        public static void BulkInsert<T>(this MySqlConnection conn, List<List<object>> sourceData, string destTableName)
         {
             var csvFile = string.Empty;
             try
