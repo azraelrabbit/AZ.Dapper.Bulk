@@ -12,6 +12,54 @@ namespace AZ.Dapper.Bulk
         private const string FieldTerminator = ",";
         private const string LineTerminator = "\r\n";
 
+        private static Dictionary<Type, DbType> dbtypeMap = new Dictionary<Type, DbType>();
+
+        static DapperBulk()
+        {
+            
+        }
+
+        static void InitDbTypeMap()
+        {
+            dbtypeMap[typeof(byte)] = DbType.Byte;
+            dbtypeMap[typeof(sbyte)] = DbType.SByte;
+            dbtypeMap[typeof(short)] = DbType.Int16;
+            dbtypeMap[typeof(ushort)] = DbType.UInt16;
+            dbtypeMap[typeof(int)] = DbType.Int32;
+            dbtypeMap[typeof(uint)] = DbType.UInt32;
+            dbtypeMap[typeof(long)] = DbType.Int64;
+            dbtypeMap[typeof(ulong)] = DbType.UInt64;
+            dbtypeMap[typeof(float)] = DbType.Single;
+            dbtypeMap[typeof(double)] = DbType.Double;
+            dbtypeMap[typeof(Decimal)] = DbType.Decimal;
+            dbtypeMap[typeof(bool)] = DbType.Boolean;
+            dbtypeMap[typeof(string)] = DbType.String;
+            dbtypeMap[typeof(char)] = DbType.StringFixedLength;
+            dbtypeMap[typeof(Guid)] = DbType.Guid;
+            dbtypeMap[typeof(DateTime)] = DbType.DateTime;
+            dbtypeMap[typeof(DateTimeOffset)] = DbType.DateTimeOffset;
+            dbtypeMap[typeof(TimeSpan)] = DbType.Time;
+            dbtypeMap[typeof(byte[])] = DbType.Binary;
+            dbtypeMap[typeof(byte?)] = DbType.Byte;
+            dbtypeMap[typeof(sbyte?)] = DbType.SByte;
+            dbtypeMap[typeof(short?)] = DbType.Int16;
+            dbtypeMap[typeof(ushort?)] = DbType.UInt16;
+            dbtypeMap[typeof(int?)] = DbType.Int32;
+            dbtypeMap[typeof(uint?)] = DbType.UInt32;
+            dbtypeMap[typeof(long?)] = DbType.Int64;
+            dbtypeMap[typeof(ulong?)] = DbType.UInt64;
+            dbtypeMap[typeof(float?)] = DbType.Single;
+            dbtypeMap[typeof(double?)] = DbType.Double;
+            dbtypeMap[typeof(Decimal?)] = DbType.Decimal;
+            dbtypeMap[typeof(bool?)] = DbType.Boolean;
+            dbtypeMap[typeof(char?)] = DbType.StringFixedLength;
+            dbtypeMap[typeof(Guid?)] = DbType.Guid;
+            dbtypeMap[typeof(DateTime?)] = DbType.DateTime;
+            dbtypeMap[typeof(DateTimeOffset?)] = DbType.DateTimeOffset;
+            dbtypeMap[typeof(TimeSpan?)] = DbType.Time;
+            dbtypeMap[typeof(object)] = DbType.Object;
+        }
+
         static string CreateCsvFile(DataTable dataSource)
         {
             var tmpFilePath = GenerateTempFileName();
