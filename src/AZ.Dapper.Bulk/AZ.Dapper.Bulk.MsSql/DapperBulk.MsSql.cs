@@ -100,7 +100,7 @@ namespace AZ.Dapper.Bulk
         }
         static void CreateTable(SqlConnection conn, DataTable sourceData, int varcharLength)
         {
-            var mssqlPrefix = "if(exists(select * from sysobjects  where name='" + sourceData.TableName + "')) CREATE TABLE  ";
+            var mssqlPrefix = "if(not exists(select * from sysobjects  where name='" + sourceData.TableName + "')) CREATE TABLE  ";
             var mssqlSuffix = ";";
 
             var createSqlSb = new StringBuilder();
@@ -127,7 +127,7 @@ namespace AZ.Dapper.Bulk
 
         private static void CreateTable(SqlConnection conn,DataTable sourceData, List<SqlBulkCopyColumnMapping> columnMappingCollection, int varcharLength)
         {
-            var mssqlPrefix = "if(exists(select * from sysobjects  where name='" + sourceData.TableName + "')) CREATE TABLE  ";
+            var mssqlPrefix = "if(not exists(select * from sysobjects  where name='" + sourceData.TableName + "')) CREATE TABLE  ";
             var mssqlSuffix = ";";
 
             var createSqlSb = new StringBuilder();
